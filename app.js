@@ -93,9 +93,13 @@
   ].filter(Boolean);
   $("enlaces").innerHTML = items.map(([i, h, t]) =>
     `<li><a href="${esc(h)}"${h.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${icon(i)}${esc(t)}</a></li>`).join("");
-  $("cta").href = C.email ? "mailto:" + C.email : C.linkedin || C.github;
-  if (C.email) document.querySelector(".nav__cta").href = "mailto:" + C.email;
-  else { $("cta").target = "_blank"; $("cta").rel = "noopener"; }
+  const wa = C.whatsapp && "https://wa.me/" + C.whatsapp.replace(/\D/g, "") +
+    (C.mensajeWhatsapp ? "?text=" + encodeURIComponent(C.mensajeWhatsapp) : "");
+  const destino = wa || (C.email ? "mailto:" + C.email : C.linkedin || C.github);
+  [$("cta"), document.querySelector(".nav__cta")].forEach((a) => {
+    a.href = destino;
+    if (destino.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
+  });
 
   // Paginador del carrusel
   const pager = $("pager");

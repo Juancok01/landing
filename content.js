@@ -13,6 +13,10 @@ window.PERFIL = {
     linkedin: "https://www.linkedin.com/in/juan-cruz-datos/",
     email: "juan.cruzcardenas011@gmail.com",
     telefono: "", // Vacío = no se muestra
+    // Número con código de país, sin "+" ni espacios (ej. "573001234567").
+    // Si está lleno, los botones "Hablemos" y "Contactar" abren WhatsApp.
+    whatsapp: "573026985111",
+    mensajeWhatsapp: "Hola Juan, vi tu portafolio y me gustaría hablar contigo.",
   },
 
   // Herramientas que aparecen debajo del título
